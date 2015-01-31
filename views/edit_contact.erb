@@ -7,15 +7,15 @@
 			<input type="hidden" name="_method" value="put">
 			<div class="input-group">
 				<span class="input-group-addon" id="basic-addon1">First Name</span>
-				<input class="form-control" type="text" name="first_name" class="textbox" value="<%= @contact.first_name %>"/>
+				<input class="form-control" type="text" name="first_name" class="textbox" value="<%= @contact.first_name %>" pattern=".{1,}" required title="Please enter a first name"/>
 			</div>
 			<div class="input-group">
 				<span class="input-group-addon" id="basic-addon1">Last Name</span>
-				<input class="form-control" type="text" name="last_name" class="textbox" value="<%= @contact.last_name %>"/>
+				<input class="form-control" type="text" name="last_name" class="textbox" value="<%= @contact.last_name %>" pattern=".{1,}" required title="Please enter a last name"/>
 			</div>
 			<div class="input-group">
 				<span class="input-group-addon" id="basic-addon1">Email<i class="fa fa-envelope-o fa-fw"></i></span>
-				<input class="form-control" type="email" name="email" class="textbox" value="<%= @contact.email %>"/>
+				<input class="form-control" type="email" name="email" class="textbox" value="<%= @contact.email %>" pattern=".{1,}" required title="Please enter an email address"/>
 			</div>
 			<div class="input-group">
 				<span class="input-group-addon" id="basic-addon1">Note</span>
