@@ -1,0 +1,123 @@
+/** {
+	border: 1px solid red;
+}*/
+
+body {
+	width: 800px;
+	margin: auto;
+	/*font-family: "Verdana" sans-serif;*/
+}
+
+.input-group {
+	padding: 5px;
+}
+.form-control {
+	border-color: #269abc;
+}
+
+.input-group-addon {
+	min-width: 100px;
+	text-align: left;
+	color: #FFFFFF;
+	background-color: #31b0d5;
+	border-color: #269abc;
+}
+
+.contact_button {
+	float: right;
+	margin-top: 5px;
+	margin-right: 5px;
+}
+
+.add_contact {
+	margin: auto;
+	border-top-style: none;
+}
+
+footer {
+	margin-top: 60px;
+	text-align: center;
+	clear: both;
+}
+
+ul {
+	list-style-type: none;
+}
+
+.fa {
+	margin-right: 7px;
+}
+
+.fa-envelope-o {
+	margin-left: 10px;
+	margin-right: 0px;
+}
+
+.profile_pic {
+	margin: auto;
+	margin-bottom: -40px;
+}
+
+.contact {
+	text-align: center;
+	width: 300px;
+	margin: auto;
+}
+
+.contact_info {
+	margin: 50px;
+}
+
+.profile_button {
+	width: 150px;
+	float: none;
+	clear: both;
+	/*margin-top: 20px;*/
+}
+
+.table td {
+	vertical-align: middle !important;
+}
+
+.table_header {
+	color: #FFF;
+	background-color: #31b0d5;
+	/*border: 1px solid #2e6da4;*/*/
+	border-radius: 4px;
+}
+
+.navbar-default {
+	border-color: #31b0d5;
+	/*background-color: #31b0d5;*/
+}
+
+.navbar-default li {
+	/*color: #fff;*/
+}
+
+/*
+fieldset {
+	width: 500px;
+}
+legend {
+	font-size: 20px;
+}
+label {
+	text-align: right;
+	width: 100px;
+	float: left;
+	font-weight: bold;
+	padding-right: 5px;
+}
+input.textbox {
+	width: 300px;
+	float: left;
+}
+input.button {
+	margin: 5px;
+	float: right;
+}
+fieldset p {
+	clear: both;
+	padding: 5px;
+}*/

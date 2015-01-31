@@ -1,0 +1,29 @@
+<body>
+	<header>
+		<h1>Edit Contact</h1>
+	</header>
+	<main>
+		<form action="/contacts/<%= @contact.id %>" method="post">
+			<input type="hidden" name="_method" value="put">
+			<div class="input-group">
+				<span class="input-group-addon" id="basic-addon1">First Name</span>
+				<input class="form-control" type="text" name="first_name" class="textbox" value="<%= @contact.first_name %>"/>
+			</div>
+			<div class="input-group">
+				<span class="input-group-addon" id="basic-addon1">Last Name</span>
+				<input class="form-control" type="text" name="last_name" class="textbox" value="<%= @contact.last_name %>"/>
+			</div>
+			<div class="input-group">
+				<span class="input-group-addon" id="basic-addon1">Email<i class="fa fa-envelope-o fa-fw"></i></span>
+				<input class="form-control" type="email" name="email" class="textbox" value="<%= @contact.email %>"/>
+			</div>
+			<div class="input-group">
+				<span class="input-group-addon" id="basic-addon1">Note</span>
+				<input class="form-control" type="text" name="note" class="textbox" value="<%= @contact.note %>"/>
+			</div>
+			<button class="btn btn-success contact_button" type="submit"><i class="fa fa-check"></i>Apply Changes</button>
+			<a class="btn btn-danger contact_button" href="/contacts"><i class="fa fa-times"></i>Cancel</a>
+			<button class="btn btn-warning contact_button" type="reset"><i class="fa fa-refresh"></i>Reset</button>
+		</form>
+	</main>
+</body>

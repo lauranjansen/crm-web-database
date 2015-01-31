@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>View All Contacts</title>
+	</head>
+	<body>
+		<h1>Contacts</h1>
+		<table class="table">
+			<tr class="table_header">
+				<td></td>
+				<td>First Name</td>
+				<td>Last Name</td>
+				<td>Email</td>
+				<td>Note</td>
+				<td></td>
+			</tr>
+			<% @contacts.each do |contact| %>
+			<tr>
+				<td>
+					<a class="btn btn-sm btn-success" href="/contacts/<%= contact.id %>"><i class="fa fa-user"></i>View</a>
+				</td>
+				<td><%= contact.first_name %></td>
+				<td><%= contact.last_name %></td>
+				<td><%= contact.email %></td>
+				<td><%= contact.note %></td>
+				<td>
+					<form action="/contacts/<%= contact.id %>" method="post">
+						<input type="hidden" name="_method" value="delete">
+						<div class="btn-group" role="group">
+							<a class="btn btn-sm btn-warning" href="/contacts/<%= contact.id %>/edit">
+								<i class="fa fa-pencil fa-lg"></i>Edit
+							</a>
+							<button class="btn btn-sm btn-danger" href="/contacts/<%= contact.id %>/delete" type="submit">
+								<i class="fa fa-trash-o fa-lg"></i>Delete
+							</button>
+	  				</div>
+  				</form>
+  			</td>
+			</tr>
+			<% end %>
+			<tr>
+				<td class="add_contact">
+					<a class="btn btn-sm btn-info" href="/contacts/new_contact"><i class="fa fa-plus"></i>Add&nbsp;</a>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

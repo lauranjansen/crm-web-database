@@ -1,0 +1,22 @@
+<body>
+	<div class="contact">
+	<h1><%= @contact.first_name %> <%= @contact.last_name %></h1>
+	<img class="profile_pic" src="/empty_profile.png"/>
+		<div class="contact_info">
+			<p><strong>First Name:</strong> <%= @contact.first_name %></p>
+			<p><strong>Last Name:</strong> <%= @contact.last_name %></p>
+			<p><strong>Email:</strong> <%= @contact.email %></p>
+			<p><strong>Note:</strong> <%= @contact.note %></p>
+			<a class="btn btn-warning contact_button profile_button" href="/contacts/<%= @contact.id %>/edit">
+				<i class="fa fa-pencil fa-lg"></i>Edit
+			</a>
+			<form action="/contacts/<%= @contact.id %>" method="post">
+			  <input type="hidden" name="_method" value="delete">
+			  <button class="btn btn-danger contact_button profile_button" type="submit"><i class="fa fa-times"></i>Delete Contact</button>
+			</form>
+			<a class="btn btn-info contact_button profile_button" href="/contacts">
+				<i class="fa fa-arrow-left"></i>Back
+			</a>
+		</div>
+	</div>
+</body>

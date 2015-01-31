@@ -1,0 +1,27 @@
+<body>
+	<header>
+		<h1>New Contact</h1>
+	</header>
+	<main>
+		<form action="/contacts" method="post">
+			<div class="input-group">
+				<span class="input-group-addon" id="basic-addon1">First Name</span>
+				<input class="form-control" type="text" name="first_name" class="textbox" placeholder="John"/>
+			</div>
+			<div class="input-group">
+				<span class="input-group-addon" id="basic-addon1">Last Name</span>
+				<input class="form-control" type="text" name="last_name" class="textbox" placeholder="Smith"/>
+			</div>
+			<div class="input-group">
+				<span class="input-group-addon" id="basic-addon1">Email&nbsp;&nbsp;&nbsp;<i class="fa fa-envelope-o fa-fw"></i></span>
+				<input class="form-control" type="email" name="email" class="textbox" placeholder="john@smith.com"/>
+			</div>
+			<div class="input-group">
+				<span class="input-group-addon" id="basic-addon1">Note</span>
+				<input class="form-control" type="text" name="note" class="textbox" placeholder="Extra information"/>
+			</div>
+			<button class="btn btn-success contact_button" type="submit"><i class="fa fa-plus"></i>Add New Contact</button>
+			<a class="btn btn-danger contact_button" href="/contacts"><i class="fa fa-times"></i>Cancel</a>
+		</form>
+	</main>
+</body>
