@@ -19,7 +19,13 @@ end
 DataMapper.finalize
 DataMapper.auto_upgrade!
 
-$rolodex = Rolodex.new
+# $rolodex = Rolodex.new
+Contact.create(first_name: "Johnny", last_name: "Bravo", email: "johnny@bravo.com", note: "Rockstar")
+# $rolodex.add_contact(Contact.create("Day Z.", "Kutter", "daisy@cutter.com", "Knife guy"))
+# $rolodex.add_contact(Contact.create("Derek", "Zoolander", "derek@cfkwcrg.com", "Supermodel"))
+# $rolodex.add_contact(Contact.create("Faith", "Connors", "mirrors@edge.com", "Runner"))
+# $rolodex.add_contact(Contact.create("Edna", "Mode", "edna@mode.com", "Designer"))
+# $rolodex.add_contact(Contact.create("Lauran", "Jansen", "lauran.jansen@gmail.com", "Coder"))
 
 $crm_name = "My CRM"
 
@@ -30,7 +36,7 @@ end
 
 get '/contacts' do
 	@title = "Contacts - #{$crm_name}"
-	@contacts = $rolodex.contacts
+	@contacts = Contact.all
   erb :contacts
 end
 
@@ -40,14 +46,17 @@ get '/contacts/new_contact' do
 end
 
 post '/contacts' do
-	# p params: params
-	new_contact = Contact.new(params[:first_name], params[:last_name], params[:email], params[:note])
-	$rolodex.add_contact(new_contact)
+	contact = Contact.create(
+		:first_name => params[:first_name],
+		:last_name => params[:last_name],
+		:email => params[:email],
+		:note => params[:note]
+	)
 	redirect '/contacts'
 end
 
 get '/contacts/:id' do
-	@contact = $rolodex.find_contact(params[:id].to_i)
+	@contact = Contact.get(params[:id].to_i)
 	if @contact
 		@title = "#{@contact.first_name} #{@contact.last_name} - #{$crm_name}"
     erb :contact
