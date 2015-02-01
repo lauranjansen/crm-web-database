@@ -1,4 +1,3 @@
-require_relative 'contact'
 require_relative 'rolodex'
 
 require 'sinatra'
@@ -7,13 +6,20 @@ require 'data_mapper'
 
 DataMapper.setup(:default, "sqlite3:database.sqlite3")
 
+class Contact
+	include DataMapper::Resource
+
+	property :id, Serial
+	property :first_name, String
+	property :last_name, String
+	property :email, String
+	property :note, String
+end
+
+DataMapper.finalize
+DataMapper.auto_upgrade!
+
 $rolodex = Rolodex.new
-$rolodex.add_contact(Contact.new("Johnny", "Bravo", "johnny@bravo.com", "Rockstar"))
-$rolodex.add_contact(Contact.new("Day Z.", "Kutter", "daisy@cutter.com", "Knife guy"))
-$rolodex.add_contact(Contact.new("Derek", "Zoolander", "derek@cfkwcrg.com", "Supermodel"))
-$rolodex.add_contact(Contact.new("Faith", "Connors", "mirrors@edge.com", "Runner"))
-$rolodex.add_contact(Contact.new("Edna", "Mode", "edna@mode.com", "Designer"))
-$rolodex.add_contact(Contact.new("Lauran", "Jansen", "lauran.jansen@gmail.com", "Coder"))
 
 $crm_name = "My CRM"
 
