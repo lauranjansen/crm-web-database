@@ -1,5 +1,3 @@
-require_relative 'rolodex'
-
 require 'sinatra'
 require 'sinatra/reloader'
 require 'data_mapper'
@@ -19,13 +17,12 @@ end
 DataMapper.finalize
 DataMapper.auto_upgrade!
 
-# $rolodex = Rolodex.new
-Contact.create(first_name: "Johnny", last_name: "Bravo", email: "johnny@bravo.com", note: "Rockstar")
-# $rolodex.add_contact(Contact.create("Day Z.", "Kutter", "daisy@cutter.com", "Knife guy"))
-# $rolodex.add_contact(Contact.create("Derek", "Zoolander", "derek@cfkwcrg.com", "Supermodel"))
-# $rolodex.add_contact(Contact.create("Faith", "Connors", "mirrors@edge.com", "Runner"))
-# $rolodex.add_contact(Contact.create("Edna", "Mode", "edna@mode.com", "Designer"))
-# $rolodex.add_contact(Contact.create("Lauran", "Jansen", "lauran.jansen@gmail.com", "Coder"))
+# Contact.create(first_name: "Johnny", last_name: "Bravo", email: "johnny@bravo.com", note: "Rockstar")
+# Contact.create(first_name: "Day Z.", last_name: "Kutter", email: "daisy@cutter.com", note: "Knife guy")
+# Contact.create(first_name: "Derek", last_name: "Zoolander", email: "derek@cfkwcrg.com", note: "Supermodel")
+# Contact.create(first_name: "Faith", last_name: "Connors", email: "mirrors@edge.com", note: "Runner")
+# Contact.create(first_name: "Edna", last_name: "Mode", email: "edna@mode.com", note: "Designer")
+# Contact.create(first_name: "Lauran", last_name: "Jansen", email: "lauran.jansen@gmail.com", note: "Coder")
 
 $crm_name = "My CRM"
 
@@ -46,6 +43,7 @@ get '/contacts/new_contact' do
 end
 
 post '/contacts' do
+	p params
 	contact = Contact.create(
 		:first_name => params[:first_name],
 		:last_name => params[:last_name],
@@ -66,7 +64,7 @@ get '/contacts/:id' do
 end
 
 get "/contacts/:id/edit" do
-	@contact = $rolodex.find_contact(params[:id].to_i)
+	@contact = Contact.get(params[:id].to_i)
 	if @contact
 		@title = "Edit Contact - #{$crm_name}"
 		erb :edit_contact
@@ -76,13 +74,13 @@ get "/contacts/:id/edit" do
 end
 
 put "/contacts/:id" do
-	@contact = $rolodex.find_contact(params[:id].to_i)
+	@contact = Contact.get(params[:id].to_i)
 	puts params
 	if @contact
-		@contact.first_name = params[:first_name]
-		@contact.last_name = params[:last_name]
-		@contact.email = params[:email]
-		@contact.note = params[:note]
+		@contact.update(:first_name => params[:first_name])
+		@contact.update(:last_name => params[:last_name])
+		@contact.update(:email => params[:email])
+		@contact.update(:note => params[:note])
 
 		redirect to("/contacts")
 	else
@@ -91,9 +89,9 @@ put "/contacts/:id" do
 end
 
 delete "/contacts/:id" do
-	@contact = $rolodex.find_contact(params[:id].to_i)
+	@contact = Contact.get(params[:id].to_i)
 	if @contact
-		$rolodex.remove_contact(@contact)
+		@contact.destroy
 		redirect to("/contacts")
 	else
 		raise Sinatra::NotFound
